@@ -6,12 +6,19 @@ import careerai_backend.entity.User;
 import careerai_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtService jwtService;
 
     // Register User
     public String registerUser(RegisterRequest request) {
@@ -20,7 +27,7 @@ public class UserService {
 
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         userRepository.save(user);
 
@@ -36,10 +43,10 @@ public class UserService {
             return "User not found";
         }
 
-        if (!user.getPassword().equals(request.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             return "Invalid password";
-        }
+}
 
-        return "Login Successful";
+        return jwtService.generateToken(user.getEmail());
     }
 }
