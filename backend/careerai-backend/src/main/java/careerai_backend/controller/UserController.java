@@ -4,6 +4,7 @@ import careerai_backend.dto.RegisterRequest;
 import careerai_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import careerai_backend.dto.LoginRequest;
 
 @RestController
 @RequestMapping("/api/users")
@@ -23,4 +24,10 @@ public class UserController {
         return userService.registerUser(request);
 
     }
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request) {
+
+    return userService.loginUser(request);
+
+}
 }
