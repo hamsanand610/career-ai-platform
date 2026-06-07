@@ -5,6 +5,7 @@ import careerai_backend.dto.RegisterRequest;
 import careerai_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import careerai_backend.service.JwtService;
 
 @RestController
 @RequestMapping("/api/users")
@@ -12,6 +13,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JwtService jwtService;
 
     @GetMapping("/test")
     public String test() {
@@ -30,6 +34,15 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profile(@RequestHeader("Authorization") String token) {
-        return "Protected Profile API Accessed Successfully";
+
+    token = token.replace("Bearer ", "");
+
+    if (!jwtService.validateToken(token)) {
+        return "Invalid Token";
     }
+
+    String email = jwtService.extractEmail(token);
+
+    return "Welcome " + email;
+}
 }
