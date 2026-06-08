@@ -104,4 +104,52 @@ public class ResumeService {
             + "\nRecommendation:\n"
             + "Add more missing keywords to improve ATS performance.";
 }
+public String generateRoadmap(String resumeText) {
+
+    StringBuilder roadmap = new StringBuilder();
+
+    roadmap.append(
+        "🚀 Career Improvement Roadmap\n\n"
+    );
+
+    String lower = resumeText.toLowerCase();
+
+    if (!lower.contains("spring boot")) {
+        roadmap.append(
+            "✓ Learn Spring Boot\n"
+        );
+    }
+
+    if (!lower.contains("rest api")) {
+        roadmap.append(
+            "✓ Build REST APIs\n"
+        );
+    }
+
+    if (!lower.contains("jwt")) {
+        roadmap.append(
+            "✓ Learn JWT Authentication\n"
+        );
+    }
+
+    if (!lower.contains("docker")) {
+        roadmap.append(
+            "✓ Learn Docker\n"
+        );
+    }
+
+    if (!lower.contains("aws")) {
+        roadmap.append(
+            "✓ Learn AWS Cloud\n"
+        );
+    }
+
+    if (!lower.contains("kubernetes")) {
+        roadmap.append(
+            "✓ Learn Kubernetes\n"
+        );
+    }
+
+    return roadmap.toString();
+}
 }
