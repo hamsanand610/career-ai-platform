@@ -12,6 +12,8 @@ public class ResumeHistory {
     private Long id;
 
     private Integer atsScore;
+    @Column(columnDefinition = "LONGTEXT")
+    private String resumeText;
 
     private LocalDateTime uploadDate;
 
@@ -47,5 +49,13 @@ public class ResumeHistory {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getResumeText() {
+        return resumeText;
+    }
+
+    public void setResumeText(String resumeText) {
+        this.resumeText = resumeText;
     }
 }

@@ -15,6 +15,9 @@ public class GeminiService {
     private final WebClient webClient = WebClient.builder().build();
 
     public String analyzeResume(String resumeText) {
+      if(apiKey == null || apiKey.isBlank()){
+    return "AI Analysis currently unavailable";
+}
 
         String prompt = """
                 Analyze the following resume and provide:

@@ -44,17 +44,15 @@ public class ResumeController {
 
             int atsScore =
                     resumeService.calculateATSScore(resumeText);
+                ResumeHistory history =
+                        new ResumeHistory();
 
-            ResumeHistory history =
-                    new ResumeHistory();
-
-            history.setAtsScore(atsScore);
-            history.setUploadDate(LocalDateTime.now());
-
+                history.setAtsScore(atsScore);
+                history.setResumeText(resumeText);
+                history.setUploadDate(LocalDateTime.now());
             resumeHistoryRepository.save(history);
 
-            String aiFeedback =
-                    geminiService.analyzeResume(resumeText);
+            String aiFeedback ="AI comig soon...";
 
             return ResponseEntity.ok(
 

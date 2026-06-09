@@ -5,13 +5,21 @@ import ResumeUpload from "./pages/ResumeUpload";
 import InterviewGenerator from "./pages/InterviewGenerator";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ResumeHistory from "./pages/ResumeHistory";
+import CareerRoadmap from "./pages/CareerRoadmap";
+import JobRecommendations from "./pages/JobRecommendations";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Login />} />
+      <Route path="/" element={<Home />} />
+
+      <Route
+        path="/login"
+        element={<Login />}
+      />
 
         <Route
           path="/dashboard"
@@ -43,6 +51,22 @@ function App() {
   element={
     <ProtectedRoute>
       <ResumeHistory />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/career-roadmap"
+  element={
+    <ProtectedRoute>
+      <CareerRoadmap />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/job-recommendations"
+  element={
+    <ProtectedRoute>
+      <JobRecommendations />
     </ProtectedRoute>
   }
 />
