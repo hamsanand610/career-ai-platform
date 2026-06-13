@@ -2,18 +2,17 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Sidebar from "../components/Sidebar";
 
 function Dashboard() {
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    navigate("/");
-  };
-
+  
 const [stats, setStats] = useState({
   latestScore: 0,
   totalResumes: 0,
-  aiReviews: 0
+  aiReviews: 0,
+  bestScore: 0,
+  averageScore: 0
 });
 
   useEffect(() => {
@@ -39,68 +38,7 @@ const [stats, setStats] = useState({
 
     <div className="dashboard-layout">
 
-      <div className="sidebar">
-              <div className="sidebar-logo">
-
-  <h1>🚀 CareerAI</h1>
-
-  <p>
-    AI Career Platform
-  </p>
-
-</div>
-        <div className="sidebar-menu">
-<div
-  className="menu-item"
-  onClick={() => navigate("/dashboard")}
->
-  🏠 Dashboard
-</div>
-
-<div
-  className="menu-item"
-  onClick={() => navigate("/resume-upload")}
->
-  📄 Resume Analyzer
-</div>
-
-<div
-  className="menu-item"
-  onClick={() => navigate("/interview-generator")}
->
-  🎤 Interview Prep
-</div>
-
-<div
-  className="menu-item"
-  onClick={() => navigate("/job-recommendations")}
->
-  💼 Job Recommendations
-</div>
-
-<div
-  className="menu-item"
-  onClick={() => navigate("/career-roadmap")}
->
-  🚀 Career Roadmap
-</div>
-
-<div
-  className="menu-item"
-  onClick={() => navigate("/resume-history")}
->
-  📜 Resume History
-</div>
-
-<div
-  className="menu-item logout-item"
-  onClick={handleLogout}
->
-  🚪 Logout
-</div>
-</div>
-
-      </div>
+      <Sidebar />
 
 <div className="main-content">
 
@@ -117,24 +55,34 @@ const [stats, setStats] = useState({
 
   {/* Stats */}
 
-  <div className="stats-grid">
+<div className="stats-grid">
 
-    <div className="stat-card">
-      <h3>📊 ATS Score</h3>
-      <p>{stats.latestScore}</p>
-    </div>
-
-    <div className="stat-card">
-      <h3>📄 Resumes</h3>
-      <p>{stats.totalResumes}</p>
-    </div>
-
-    <div className="stat-card">
-      <h3>🤖 AI Reviews</h3>
-      <p>{stats.aiReviews}</p>
-    </div>
-
+  <div className="stat-card">
+    <h3>🔥 Latest Score</h3>
+    <p>{stats.latestScore}</p>
   </div>
+
+  <div className="stat-card">
+    <h3>🏆 Best Score</h3>
+    <p>{stats.bestScore}</p>
+  </div>
+
+  <div className="stat-card">
+    <h3>📈 Average Score</h3>
+    <p>{stats.averageScore}</p>
+  </div>
+
+  <div className="stat-card">
+    <h3>📄 Resumes</h3>
+    <p>{stats.totalResumes}</p>
+  </div>
+
+  <div className="stat-card">
+    <h3>🧠 AI Reviews</h3>
+    <p>{stats.aiReviews}</p>
+  </div>
+
+</div>
 
   {/* Quick Actions */}
 <h2 className="section-title">

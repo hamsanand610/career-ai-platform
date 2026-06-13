@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import "./../styles/ResumeUpload.css";
+import "../styles/Dashboard.css";
+import Sidebar from "../components/Sidebar";
 
 function ResumeUpload() {
 
@@ -31,7 +33,7 @@ function ResumeUpload() {
 
       setResult(response.data);
 
-const parts = response.data.split("GEMINI AI ANALYSIS");
+const parts = response.data.split("AI RESUME ANALYSIS");
 
 if (parts.length > 1) {
 
@@ -92,95 +94,126 @@ else if (parseInt(atsScore) < 50) {
   scoreText = "Needs Improvement";
 }
 
-  return (
-  <div className="resume-container">
+return (
 
-    <div className="page-header">
-      <h1>🚀 CareerAI Resume Analyzer</h1>
-      <p>Get ATS insights and AI-powered feedback instantly</p>
-    </div>
+  <div className="dashboard-layout">
 
-    <div className="top-grid">
+    <Sidebar />
 
-      <div className="upload-card">
+    <div className="main-content">
 
-        <h2>📄 Upload Resume</h2>
+      <div className="resume-container">
 
-        <input
-          type="file"
-          accept=".pdf"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
+        <div className="page-header">
+          <h1>🚀 CareerAI Resume Analyzer</h1>
+          <p>
+            Get ATS insights and AI-powered feedback instantly
+          </p>
+        </div>
 
-        <button
-          className="analyze-btn"
-          onClick={handleUpload}
-        >
-          Analyze Resume
-        </button>
+        <div className="top-grid">
+
+          <div className="upload-card">
+
+            <h2>📄 Upload Resume</h2>
+
+            <input
+              type="file"
+              accept=".pdf"
+              onChange={(e) =>
+                setFile(e.target.files[0])
+              }
+            />
+
+            <button
+              className="analyze-btn"
+              onClick={handleUpload}
+            >
+              Analyze Resume
+            </button>
+
+          </div>
+
+          {result && (
+
+            <div
+              className="score-card"
+              style={{ background: scoreColor }}
+            >
+              <h2>ATS Score</h2>
+
+              <p>{atsScore}/100</p>
+
+              <span>{scoreText}</span>
+
+            </div>
+
+          )}
+
+        </div>
+
+        {result && (
+
+          <>
+
+            <div className="result-box">
+
+              <h2>✅ Found Skills</h2>
+
+              <div className="skills-container">
+
+                {foundSkills.map((skill) => (
+
+                  <span
+                    className="skill-tag found"
+                    key={skill}
+                  >
+                    {skill}
+                  </span>
+
+                ))}
+
+              </div>
+
+              <h2 style={{ marginTop: "30px" }}>
+                ❌ Missing Skills
+              </h2>
+
+              <div className="skills-container">
+
+                {missingSkills.map((skill) => (
+
+                  <span
+                    className="skill-tag missing"
+                    key={skill}
+                  >
+                    {skill}
+                  </span>
+
+                ))}
+
+              </div>
+
+            </div>
+
+            <div className="result-box">
+
+              <h2>🤖 Gemini AI Feedback</h2>
+
+              <pre>{geminiReport}</pre>
+
+            </div>
+
+          </>
+
+        )}
 
       </div>
 
-      {result && (
-        <div
-  className="score-card"
-  style={{ background: scoreColor }}
->
-  <h2>ATS Score</h2>
-
-  <p>{atsScore}/100</p>
-
-  <span>{scoreText}</span>
-</div>
-      )}
-
     </div>
 
-    {result && (
-      <>
-        <div className="result-box">
-
-          <h2>✅ Found Skills</h2>
-
-          <div className="skills-container">
-            {foundSkills.map((skill) => (
-              <span
-                className="skill-tag found"
-                key={skill}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-
-          <h2 style={{ marginTop: "30px" }}>
-            ❌ Missing Skills
-          </h2>
-
-          <div className="skills-container">
-            {missingSkills.map((skill) => (
-              <span
-                className="skill-tag missing"
-                key={skill}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-
-        </div>
-
-        <div className="result-box">
-
-          <h2>🤖 Gemini AI Feedback</h2>
-
-          <pre>{geminiReport}</pre>
-
-        </div>
-      </>
-    )}
-
   </div>
+
 );
 }
 

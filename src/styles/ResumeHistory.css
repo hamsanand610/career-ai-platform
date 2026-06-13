@@ -1,4 +1,7 @@
 .history-container {
+  width: 100%;
+}
+.history-container {
   min-height: 100vh;
   padding: 40px;
   background: #050816;
@@ -130,40 +133,122 @@
 
 .excellent {
 
-  background:
-    rgba(34,197,94,.15);
+  background: rgba(34,197,94,.15);
 
-  color:
-    #4ade80;
+  color: #4ade80;
+
+  box-shadow: 0 0 25px rgba(34,197,94,.15);
 }
 
 .good {
 
-  background:
-    rgba(251,191,36,.15);
+  background: rgba(251,191,36,.15);
 
-  color:
-    #facc15;
+  color: #facc15;
+
+  box-shadow: 0 0 25px rgba(251,191,36,.15);
 }
 
 .poor {
 
-  background:
-    rgba(239,68,68,.15);
+  background: rgba(139,92,246,.15);
 
-  color:
-    #f87171;
+  color: #a78bfa;
+
+  box-shadow: 0 0 25px rgba(139,92,246,.15);
+}
+.history-stat-card span {
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  display: block;
+
+  margin-top: 8px;
+}
+.history-stat-card {
+
+  background: rgba(255,255,255,.05);
+
+  border: 1px solid rgba(255,255,255,.1);
+
+  backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  box-shadow: 0 0 20px rgba(139,92,246,.1);
 }
 
-.history-card p {
-
-  color: #cbd5e1;
-
-  line-height: 1.8;
-
-  font-size: 15px;
+.history-stat-card h3{
+  color:#94a3b8;
 }
 
+.history-stat-card p{
+  font-size:48px;
+  font-weight:700;
+  color:#8b5cf6;
+}
+.history-summary{
+
+  width: auto;
+
+  margin:0 auto 40px;
+
+  text-align:center;
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  backdrop-filter:blur(20px);
+
+  border-radius:24px;
+
+  padding:25px;
+
+  box-shadow:
+    0 0 25px rgba(139,92,246,.15);
+}
+
+.history-summary h3{
+  color:#94a3b8;
+}
+
+.history-summary p{
+
+  font-size:52px;
+
+  font-weight:700;
+
+  color:#8b5cf6;
+
+  margin:10px 0;
+}
+
+.history-summary span{
+  color:#cbd5e1;
+}.score-status{
+
+  text-align:center;
+
+  margin-bottom:20px;
+
+  color:#94a3b8;
+
+  font-weight:600;
+}
+.latest-card {
+
+  border: 1px solid #8b5cf6;
+
+  box-shadow:
+    0 0 25px rgba(139,92,246,.25);
+}
 @media (max-width:768px) {
 
   .history-container {

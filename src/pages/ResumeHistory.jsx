@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/ResumeHistory.css";
+import Sidebar from "../components/Sidebar";
+import "../styles/Dashboard.css";
 
 function ResumeHistory() {
 
@@ -24,65 +26,103 @@ function ResumeHistory() {
   }, []);
 
 return (
-  <div className="history-container">
 
-    <div className="history-header">
+  <div className="dashboard-layout">
 
-      <h1>📜 Resume History</h1>
+    <Sidebar />
 
-      <button
-        onClick={() => window.history.back()}
-        className="back-btn"
-      >
-        ← Back
-      </button>
+    <div className="main-content">
 
-    </div>
+      <div className="history-container">
 
-    <div className="history-grid">
+        <div className="history-header">
 
-      {history.map((item) => (
+          <h1>📜 Resume History</h1>
 
-        <div
-          key={item.id}
-          className="history-card"
-        >
-
-          <h2>
-            ATS Score
-          </h2>
-
-          <div
-            className={`score-badge ${
-              item.atsScore >= 80
-                ? "excellent"
-                : item.atsScore >= 60
-                ? "good"
-                : "poor"
-            }`}
+          <button
+            onClick={() => window.history.back()}
+            className="back-btn"
           >
-            {item.atsScore}/100
-          </div>
+            ← Back
+          </button>
 
-          <p>
-            📅{" "}
-            {new Date(item.uploadDate)
-              .toLocaleDateString()}
-          </p>
+        </div>
+<div className="history-summary">
 
-          <p>
-            🕒{" "}
-            {new Date(item.uploadDate)
-              .toLocaleTimeString()}
-          </p>
+  <h3>Latest ATS Score</h3>
+
+  <p>{history[0]?.atsScore}</p>
+
+  <span>
+    {history[0]?.atsScore >= 80
+      ? "🚀 Excellent Resume"
+      : history[0]?.atsScore >= 60
+      ? "📈 Improving"
+      : "⚡ Keep Improving"}
+  </span>
+
+</div>        <div className="history-grid">
+
+          {history.map((item) => (
+
+            <div
+  key={item.id}
+  className={`history-card ${
+    item.id === history[0]?.id
+      ? "latest-card"
+      : ""
+  }`}
+>
+<h2>
+  Resume Analysis #{item.id}
+</h2>
+
+              <div
+                className={`score-badge ${
+                  item.atsScore >= 80
+                    ? "excellent"
+                    : item.atsScore >= 60
+                    ? "good"
+                    : "poor"
+                }`}
+              >
+                {item.atsScore}/100
+              </div>
+              <div className="score-status">
+
+  {item.atsScore >= 80
+    ? "🟢 Excellent Resume"
+    : item.atsScore >= 60
+    ? "🟡 Good Resume"
+    : "🔴 Needs Improvement"}
+
+</div>
+
+              <p>
+                📅{" "}
+                {new Date(item.uploadDate)
+                  .toLocaleDateString()}
+              </p>
+
+              <p>
+                🕒{" "}
+                {new Date(item.uploadDate)
+                  .toLocaleTimeString()}
+              </p>
+
+            </div>
+            
+
+          ))}
 
         </div>
 
-      ))}
+      </div>
 
     </div>
 
   </div>
+
 );
 }
 

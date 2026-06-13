@@ -1,10 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import "../styles/InterviewGenerator.css";
+import Sidebar from "../components/Sidebar";
+import "../styles/Dashboard.css";
 
 function InterviewGenerator() {
 
   const [role, setRole] = useState("");
+  const [difficulty, setDifficulty] = useState("Beginner");
   const [questions, setQuestions] = useState("");
 
   const generateQuestions = async () => {
@@ -17,7 +20,7 @@ function InterviewGenerator() {
   try {
 
     const response = await axios.get(
-      `http://localhost:8080/api/interview/generate?role=${role}`
+      `http://localhost:8080/api/interview/generate?role=${role}&difficulty=${difficulty}`
     );
 
     setQuestions(response.data);
@@ -30,73 +33,121 @@ function InterviewGenerator() {
 
   }
 };
+<select
+  className="role-select"
+  value={role}
+  onChange={(e) => setRole(e.target.value)}
+>
+  <option value="">
+    Select Role
+  </option>
+
+  <option>
+    Full Stack Developer
+  </option>
+
+  <option>
+    Java Developer
+  </option>
+
+  <option>
+    Frontend Developer
+  </option>
+
+  <option>
+    Backend Developer
+  </option>
+
+</select>
+
 return (
-  <div className="interview-container">
 
-    <div className="interview-header">
+  <div className="dashboard-layout">
 
-      <h1>🎤 AI Interview Generator</h1>
+    <Sidebar />
 
-      <p>
-        Generate personalized interview questions
-        based on your target role.
-      </p>
+    <div className="main-content">
 
-    </div>
+      <div className="interview-container">
 
-    <div className="interview-card">
+        <div className="interview-header">
 
-      <select
-        className="role-select"
-        value={role}
-        onChange={(e) => setRole(e.target.value)}
-      >
-        <option value="">
-          Select Role
-        </option>
+          <h1>🎤 AI Interview Generator</h1>
 
-        <option>
-          Full Stack Developer
-        </option>
-
-        <option>
-          Java Developer
-        </option>
-
-        <option>
-          Frontend Developer
-        </option>
-
-        <option>
-          Backend Developer
-        </option>
-
-      </select>
-
-      <button
-        className="generate-btn"
-        onClick={generateQuestions}
-      >
-        Generate Questions
-      </button>
-
-      {questions && (
-
-        <div className="question-box">
-
-          <h2>
-            🎯 Interview Questions
-          </h2>
-
-          <pre>{questions}</pre>
+          <p>
+            Generate personalized interview questions
+            based on your target role.
+          </p>
 
         </div>
 
-      )}
+        <div className="interview-card">
+
+          <select
+            className="role-select"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+
+            <option value="">
+              Select Role
+            </option>
+
+            <option>
+              Full Stack Developer
+            </option>
+
+            <option>
+              Java Developer
+            </option>
+
+            <option>
+              Frontend Developer
+            </option>
+
+            <option>
+              Backend Developer
+            </option>
+
+          </select>
+        <select
+  className="role-select"
+  value={difficulty}
+  onChange={(e) => setDifficulty(e.target.value)}
+>
+  <option>Beginner</option>
+  <option>Intermediate</option>
+  <option>Advanced</option>
+</select>
+          <button
+            className="generate-btn"
+            onClick={generateQuestions}
+          >
+            Generate Questions
+          </button>
+
+          {questions && (
+
+            <div className="question-box">
+
+              <h2>
+                🎯 Interview Questions
+              </h2>
+
+              <pre>{questions}</pre>
+
+            </div>
+
+          )}
+
+        </div>
+
+      </div>
 
     </div>
 
   </div>
+
 );
 }
 

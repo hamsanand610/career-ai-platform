@@ -263,4 +263,26 @@ font-size: 36px;
 flex-direction: column;
 text-align: center;
 }
+.active-menu {
+
+  background: linear-gradient(
+    135deg,
+    rgba(139,92,246,.3),
+    rgba(59,130,246,.2)
+  );
+
+  border: 1px solid rgba(139,92,246,.3);
+
+  box-shadow:
+    0 0 20px rgba(139,92,246,.2);
+}
+
+.sidebar {
+
+  position: sticky;
+
+  top: 0;
+
+  height: 100vh;
+}
 }
