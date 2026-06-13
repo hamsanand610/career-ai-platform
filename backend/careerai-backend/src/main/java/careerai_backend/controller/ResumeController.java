@@ -2,7 +2,7 @@ package careerai_backend.controller;
 
 import careerai_backend.entity.ResumeHistory;
 import careerai_backend.repository.ResumeHistoryRepository;
-import careerai_backend.service.GeminiService;
+import careerai_backend.service.AIService;
 import careerai_backend.service.ResumeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class ResumeController {
     private ResumeService resumeService;
 
     @Autowired
-    private GeminiService geminiService;
+    private AIService aiService;
 
     @Autowired
     private ResumeHistoryRepository resumeHistoryRepository;
@@ -52,7 +52,29 @@ public class ResumeController {
                 history.setUploadDate(LocalDateTime.now());
             resumeHistoryRepository.save(history);
 
-            String aiFeedback ="AI comig soon...";
+          String aiFeedback =
+        aiService.askAI(
+                """
+                Analyze this software developer resume.
+
+                Provide:
+
+                1. Strengths
+                2. Weaknesses
+                3. Missing Skills
+                4. ATS Improvements
+                5. Interview Readiness Score
+
+                Resume:
+
+                %s
+                """
+                .formatted(
+                resumeText.length() > 2500
+                        ? resumeText.substring(0, 2500)
+                        : resumeText
+                )
+        );
 
             return ResponseEntity.ok(
 
@@ -63,8 +85,8 @@ public class ResumeController {
                     + roadmap
 
                     + "\n\n====================\n"
-
-                    + "GEMINI AI ANALYSIS\n"
+                    
+                    + "AI RESUME ANALYSIS\n"
 
                     + "====================\n\n"
 

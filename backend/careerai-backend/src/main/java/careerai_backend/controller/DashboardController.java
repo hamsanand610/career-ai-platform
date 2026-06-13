@@ -14,32 +14,51 @@ public class DashboardController {
     @Autowired
     private ResumeHistoryRepository resumeHistoryRepository;
 
-    @GetMapping("/stats")
-    public Map<String, Object> getStats() {
+@GetMapping("/stats")
+public Map<String, Object> getStats() {
 
-        Map<String, Object> stats = new HashMap<>();
+    Map<String, Object> stats = new HashMap<>();
 
-        long totalResumes =
-        resumeHistoryRepository.count();
+    long totalResumes =
+            resumeHistoryRepository.count();
 
-stats.put("totalResumes", totalResumes);
+    stats.put("totalResumes", totalResumes);
 
-stats.put("aiReviews", totalResumes);
+    stats.put("aiReviews", totalResumes);
 
-Integer latestScore = 0;
+    Integer latestScore = 0;
 
-if (resumeHistoryRepository
-        .findTopByOrderByUploadDateDesc()
-        .isPresent()) {
+    if (resumeHistoryRepository
+            .findTopByOrderByUploadDateDesc()
+            .isPresent()) {
 
-    latestScore =
-            resumeHistoryRepository
-                    .findTopByOrderByUploadDateDesc()
-                    .get()
-                    .getAtsScore();
-}
-
-stats.put("latestScore", latestScore);
-        return stats;
+        latestScore =
+                resumeHistoryRepository
+                        .findTopByOrderByUploadDateDesc()
+                        .get()
+                        .getAtsScore();
     }
+
+    stats.put("latestScore", latestScore);
+
+    Integer bestScore =
+            resumeHistoryRepository.findBestScore();
+
+    Double averageScore =
+            resumeHistoryRepository.findAverageScore();
+
+    stats.put(
+            "bestScore",
+            bestScore == null ? 0 : bestScore
+    );
+
+    stats.put(
+            "averageScore",
+            averageScore == null
+                    ? 0
+                    : Math.round(averageScore)
+    );
+
+    return stats;
+}
 }
