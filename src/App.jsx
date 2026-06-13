@@ -8,6 +8,7 @@ import ResumeHistory from "./pages/ResumeHistory";
 import CareerRoadmap from "./pages/CareerRoadmap";
 import JobRecommendations from "./pages/JobRecommendations";
 import Home from "./pages/Home";
+import JobMatch from "./pages/JobMatch";
 
 function App() {
   return (
@@ -70,7 +71,10 @@ function App() {
     </ProtectedRoute>
   }
 />
-
+<Route
+  path="/job-match"
+  element={<JobMatch />}
+/>
       </Routes>
     </BrowserRouter>
   );

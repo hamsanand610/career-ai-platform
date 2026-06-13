@@ -10,9 +10,12 @@ function ResumeUpload() {
   const [result, setResult] = useState("");
   const [atsScore, setAtsScore] = useState("");
 
-  const [geminiReport, setGeminiReport] = useState("");
+  const [, setGeminiReport] = useState("");
   const [foundSkills, setFoundSkills] = useState([]);
   const [missingSkills, setMissingSkills] = useState([]);
+
+  const [reportContent, setReportContent] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleUpload = async () => {
 
@@ -20,6 +23,7 @@ function ResumeUpload() {
       alert("Please select a PDF");
       return;
     }
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("file", file);
@@ -32,6 +36,7 @@ function ResumeUpload() {
       );
 
       setResult(response.data);
+      setReportContent(response.data);
 
 const parts = response.data.split("AI RESUME ANALYSIS");
 
@@ -79,20 +84,71 @@ if (match) {
       console.error(error);
       alert("Upload Failed ❌");
 
+    }finally {
+      setLoading(false);
     }
   };
 
-  let scoreColor = "#2563eb";
-let scoreText = "Average Resume";
+let scoreColor = "#f59e0b";
+let scoreText = "Good Resume";
 
-if (parseInt(atsScore) >= 80) {
+const score = Number(atsScore || 0);
+
+if (score >= 80) {
+
   scoreColor = "#16a34a";
   scoreText = "Excellent Resume";
+
 }
-else if (parseInt(atsScore) < 50) {
+else if (score < 50) {
+
   scoreColor = "#dc2626";
   scoreText = "Needs Improvement";
+
 }
+const downloadPdf = async () => {
+
+  try {
+
+    const response = await axios.post(
+      "http://localhost:8080/api/report/download",
+      reportContent,
+      {
+        responseType: "blob",
+        headers: {
+          "Content-Type": "text/plain"
+        }
+      }
+    );
+
+    const url =
+      window.URL.createObjectURL(
+        new Blob([response.data])
+      );
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.setAttribute(
+      "download",
+      "CareerAI_Report.pdf"
+    );
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("PDF download failed");
+  }
+};
 
 return (
 
@@ -128,8 +184,11 @@ return (
             <button
               className="analyze-btn"
               onClick={handleUpload}
+              disabled={loading}
             >
-              Analyze Resume
+              {loading
+                ? "⏳ Analyzing Resume..."
+                : "Analyze Resume"}
             </button>
 
           </div>
@@ -198,10 +257,16 @@ return (
 
             <div className="result-box">
 
-              <h2>🤖 Gemini AI Feedback</h2>
+              <h2>🤖 AI Feedback</h2>
 
-              <pre>{geminiReport}</pre>
-
+              <pre>{reportContent}</pre>
+                <button
+  className="analyze-btn"
+  onClick={downloadPdf}
+  style={{ marginTop: "20px" }}
+>
+  📄 Download PDF Report
+</button>
             </div>
 
           </>

@@ -50,4 +50,35 @@ public class InterviewService {
 
         return aiService.askAI(prompt);
     }
+    public String evaluateAnswer(
+        String question,
+        String answer
+) {
+
+    String prompt = """
+            Act as a senior technical interviewer.
+
+            Interview Question:
+            %s
+
+            Candidate Answer:
+            %s
+
+            Evaluate the answer and provide:
+
+            1. Score out of 10
+            2. Strengths
+            3. Weaknesses
+            4. Missing Points
+            5. Improved Answer
+
+            Be constructive and professional.
+            """
+            .formatted(
+                    question,
+                    answer
+            );
+
+    return aiService.askAI(prompt);
+}
 }

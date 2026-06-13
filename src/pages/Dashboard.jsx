@@ -106,7 +106,20 @@ const [stats, setStats] = useState({
     <h3>🎤 Interview Generator</h3>
     <p>Generate personalized interview questions.</p>
   </div>
+    <div
+  className="feature-card"
+  onClick={() =>
+    navigate("/job-match")
+  }
+>
+  <h3>🎯 Resume vs Job Match</h3>
 
+  <p>
+    Compare your resume with any
+    job description and get a
+    matching score.
+  </p>
+</div>
   <div
     className="action-card"
     onClick={() => navigate("/career-roadmap")}
@@ -122,6 +135,7 @@ const [stats, setStats] = useState({
     <h3>💼 Job Recommendations</h3>
     <p>Explore jobs based on your skills.</p>
   </div>
+  
 
 </div>
 <div className="recent-wrapper">

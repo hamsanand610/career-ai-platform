@@ -5,6 +5,7 @@ import careerai_backend.repository.ResumeHistoryRepository;
 import careerai_backend.service.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import careerai_backend.dto.InterviewAnswerRequest;
 
 @RestController
 @RequestMapping("/api/interview")
@@ -37,11 +38,21 @@ public String generateQuestions(
                 """;
     }
 
-    return interviewService
-            .generateQuestionsFromResume(
-                    role,
-                    difficulty,
-                    latestResume.getResumeText()
-            );
+   return interviewService
+        .generateQuestionsFromResume(
+                role,
+                difficulty,
+                "Java Spring Boot MySQL React Docker AWS"
+        );
+}
+@PostMapping("/evaluate")
+public String evaluateAnswer(
+        @RequestBody InterviewAnswerRequest request
+) {
+
+    return interviewService.evaluateAnswer(
+            request.getQuestion(),
+            request.getAnswer()
+    );
 }
     }

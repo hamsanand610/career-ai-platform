@@ -21,6 +21,11 @@ function Sidebar() {
       path: "/interview-generator",
     },
     {
+  name: "Job Match",
+  path: "/job-match",
+  icon: "🎯"
+},
+    {
       name: "Job Recommendations",
       icon: "💼",
       path: "/job-recommendations",

@@ -112,4 +112,30 @@ public class ResumeController {
                 .findAllByOrderByUploadDateDesc();
 
     }
+    @PostMapping("/extract")
+public ResponseEntity<String> extractResume(
+        @RequestParam("file")
+        MultipartFile file
+) {
+
+    try {
+
+        String resumeText =
+                resumeService.extractText(file);
+
+        return ResponseEntity.ok(
+                resumeText
+        );
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .badRequest()
+                .body(
+                    "Failed to extract resume"
+                );
+    }
+}
 }

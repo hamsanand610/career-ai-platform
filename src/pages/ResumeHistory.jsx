@@ -62,7 +62,20 @@ return (
   </span>
 
 </div>        <div className="history-grid">
+      {history.length === 0 && (
 
+  <div className="history-card">
+
+    <h2>No Resume History Found</h2>
+
+    <p>
+      Upload and analyze your first resume
+      to start building history.
+    </p>
+
+  </div>
+
+)}
           {history.map((item) => (
 
             <div
