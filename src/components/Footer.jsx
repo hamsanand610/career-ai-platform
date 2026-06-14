@@ -1,12 +1,11 @@
+
 const Footer = () => {
   return (
     <footer
-  id="contact"
-  className="py-28 px-6 bg-black text-white relative overflow-hidden border-t border-white/10"
->
-
+      id="contact"
+      className="py-28 px-6 bg-black text-white relative overflow-hidden border-t border-white/10"
+    >
       {/* Glow */}
-
       <div className="absolute right-0 bottom-0 w-[350px] h-[350px] bg-purple-600 blur-[180px] opacity-20 rounded-full"></div>
 
       <div className="max-w-7xl mx-auto">
@@ -16,31 +15,51 @@ const Footer = () => {
         <div className="bg-white/5 border border-white/10 rounded-[40px] p-12 md:p-20 backdrop-blur-xl text-center mb-20">
 
           <p className="text-purple-400 uppercase tracking-[0.4em] text-sm mb-6">
-            Start Your Journey
+            CareerAI Platform
           </p>
 
           <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-8">
-            Boost Your Career <br />
-            With AI-Powered Preparation
+            Ready to Land Your <br />
+            Dream Job?
           </h2>
 
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-12">
-            Prepare smarter, track progress, improve your resume,
-            and crack interviews with intelligent AI-driven tools
-            designed for students and job seekers.
+          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+            Analyze resumes, prepare for interviews,
+            match against job descriptions and build
+            a personalized career roadmap using AI.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm text-gray-300">
+
+            <span className="bg-white/5 px-4 py-2 rounded-full border border-white/10">
+              ✓ Resume Analysis
+            </span>
+
+            <span className="bg-white/5 px-4 py-2 rounded-full border border-white/10">
+              ✓ AI Interviews
+            </span>
+
+            <span className="bg-white/5 px-4 py-2 rounded-full border border-white/10">
+              ✓ Job Matching
+            </span>
+
+            <span className="bg-white/5 px-4 py-2 rounded-full border border-white/10">
+              ✓ Career Roadmaps
+            </span>
+
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
 
             <button className="bg-gradient-to-r from-purple-500 to-blue-500 px-10 py-4 rounded-full font-semibold text-lg hover:scale-105 transition duration-300 shadow-lg shadow-purple-500/20">
 
-              Get Started Free
+              🚀 Try CareerAI
 
             </button>
 
             <button className="border border-white/10 bg-white/5 px-10 py-4 rounded-full font-semibold text-lg hover:border-purple-500/40 transition duration-300">
 
-              Explore Features
+              ✨ Explore Features
 
             </button>
 
@@ -48,7 +67,7 @@ const Footer = () => {
 
         </div>
 
-        {/* Footer Bottom */}
+        {/* Footer Grid */}
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
 
@@ -61,13 +80,14 @@ const Footer = () => {
             </h3>
 
             <p className="text-gray-400 leading-relaxed">
-              AI-powered interview preparation platform helping
-              students build better careers and achieve placement success.
+              All-in-one AI career platform featuring
+              resume analysis, interview preparation,
+              job matching and personalized career roadmaps.
             </p>
 
           </div>
 
-          {/* Links */}
+          {/* Product */}
 
           <div>
 
@@ -78,82 +98,101 @@ const Footer = () => {
             <ul className="space-y-4 text-gray-400">
 
               <li className="hover:text-white transition cursor-pointer">
-                Features
-              </li>
-
-              <li className="hover:text-white transition cursor-pointer">
-                Dashboard
-              </li>
-
-              <li className="hover:text-white transition cursor-pointer">
                 Resume Analyzer
               </li>
 
               <li className="hover:text-white transition cursor-pointer">
-                AI Interviews
+                Interview Preparation
+              </li>
+
+              <li className="hover:text-white transition cursor-pointer">
+                Resume vs Job Match
+              </li>
+
+              <li className="hover:text-white transition cursor-pointer">
+                Career Roadmap
               </li>
 
             </ul>
 
           </div>
 
-          {/* Company */}
+          {/* Technologies */}
 
           <div>
 
             <h4 className="text-xl font-semibold mb-6">
-              Company
+              Technologies
+            </h4>
+
+            <ul className="space-y-4 text-gray-400">
+
+              <li className="hover:text-white transition">
+                React
+              </li>
+
+              <li className="hover:text-white transition">
+                Spring Boot
+              </li>
+
+              <li className="hover:text-white transition">
+                MySQL
+              </li>
+
+              <li className="hover:text-white transition">
+                Groq AI
+              </li>
+
+            </ul>
+
+          </div>
+
+          {/* Developer */}
+
+          <div>
+
+            <h4 className="text-xl font-semibold mb-6">
+              Developer
             </h4>
 
             <ul className="space-y-4 text-gray-400">
 
               <li className="hover:text-white transition cursor-pointer">
-                About
+                Hamsanand S I
               </li>
 
               <li className="hover:text-white transition cursor-pointer">
-                Careers
+                <a
+  href="https://github.com/hamsanand610/career-ai-platform"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white transition"
+>
+  GitHub
+</a>
               </li>
 
               <li className="hover:text-white transition cursor-pointer">
-                Contact
+                <a
+  href="https://www.linkedin.com/in/hamsanand-s-i-612950294?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white transition"
+>
+  LinkedIn
+</a>
               </li>
 
               <li className="hover:text-white transition cursor-pointer">
-                Privacy Policy
+                <a
+  href="mailto:hamsanand610@gmail.com"
+  className="hover:text-white transition"
+>
+  Email
+</a>
               </li>
 
             </ul>
-
-          </div>
-
-          {/* Newsletter */}
-
-          <div>
-
-            <h4 className="text-xl font-semibold mb-6">
-              Stay Updated
-            </h4>
-
-            <p className="text-gray-400 mb-6">
-              Get latest interview tips and AI career insights.
-            </p>
-
-            <div className="flex flex-col gap-4">
-
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-white/5 border border-white/10 rounded-full px-5 py-4 outline-none focus:border-purple-500/40"
-              />
-
-              <button className="bg-gradient-to-r from-purple-500 to-blue-500 py-4 rounded-full font-semibold hover:scale-105 transition duration-300">
-
-                Subscribe
-
-              </button>
-
-            </div>
 
           </div>
 
@@ -163,7 +202,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-16 pt-8 text-center text-gray-500">
 
-          © 2026 CareerAI. All rights reserved.
+          Built by Hamsanand S I using React, Spring Boot, MySQL and Groq AI.
 
         </div>
 
@@ -174,3 +213,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

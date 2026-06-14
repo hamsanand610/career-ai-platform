@@ -17,42 +17,45 @@ public class AIService {
     private final WebClient webClient = WebClient.builder().build();
 
     public String askAI(String prompt) {
-        String safePrompt = prompt
-        .replace("\\", "\\\\")
-        .replace("\"", "\\\"")
-        .replace("\r", "")
-        .replace("\n", "\\n");
 
-String requestBody = String.format("""
-{
-  "model": "llama-3.1-8b-instant",
-  "messages": [
-    {
-      "role": "user",
-      "content": "%s"
-    }
-  ],
-  "temperature": 0.7
-}
-""", safePrompt);
+        String safePrompt = prompt
+                .replace("\\", "\\\\")
+                .replace("\"", "\\\"")
+                .replace("\r", "")
+                .replace("\n", "\\n");
+
+        String requestBody = String.format("""
+        {
+          "model": "llama-3.1-8b-instant",
+          "messages": [
+            {
+              "role": "user",
+              "content": "%s"
+            }
+          ],
+          "temperature": 0.7
+        }
+        """, safePrompt);
 
         try {
 
             String response = webClient.post()
                     .uri("https://api.groq.com/openai/v1/chat/completions")
-                    .header(HttpHeaders.AUTHORIZATION,
-                            "Bearer " + apiKey)
+                    .header(
+                            HttpHeaders.AUTHORIZATION,
+                            "Bearer " + apiKey
+                    )
                     .contentType(MediaType.APPLICATION_JSON)
                     .bodyValue(requestBody)
                     .retrieve()
-                .onStatus(
-                        status -> status.isError(),
-                        clientResponse ->
-                                clientResponse.bodyToMono(String.class)
-                                        .map(RuntimeException::new)
-)
-.bodyToMono(String.class)
-.block();
+                    .onStatus(
+                            status -> status.isError(),
+                            clientResponse ->
+                                    clientResponse.bodyToMono(String.class)
+                                            .map(RuntimeException::new)
+                    )
+                    .bodyToMono(String.class)
+                    .block();
 
             ObjectMapper mapper =
                     new ObjectMapper();
@@ -67,11 +70,12 @@ String requestBody = String.format("""
                     .path("content")
                     .asText();
 
-         } catch (Exception e) {
+        } catch (Exception e) {
 
-    e.printStackTrace();
+            e.printStackTrace();
 
-    return "AI Service Error:\n" + e.getMessage();
-}
+            return "AI Service Error:\n"
+                    + e.getMessage();
+        }
     }
 }

@@ -54,6 +54,7 @@ public class ResumeController {
 
           String aiFeedback =
         aiService.askAI(
+                
                 """
                 Analyze this software developer resume.
 
@@ -69,11 +70,13 @@ public class ResumeController {
 
                 %s
                 """
+                
                 .formatted(
-                resumeText.length() > 2500
-                        ? resumeText.substring(0, 2500)
+                resumeText.length() > 1000
+                        ? resumeText.substring(0, 1000)
                         : resumeText
                 )
+                
         );
 
             return ResponseEntity.ok(
@@ -122,6 +125,9 @@ public ResponseEntity<String> extractResume(
 
         String resumeText =
                 resumeService.extractText(file);
+        System.out.println("========== RESUME TEXT ==========");
+System.out.println(resumeText);
+System.out.println("=================================");
 
         return ResponseEntity.ok(
                 resumeText

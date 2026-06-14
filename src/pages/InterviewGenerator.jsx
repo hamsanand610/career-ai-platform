@@ -277,9 +277,6 @@ function InterviewGenerator() {
   <pre>{evaluation}</pre>
 
 </div>
-                <pre>
-                  {evaluation}
-                </pre>
 
               </div>
 

@@ -27,20 +27,52 @@ public class ResumeService {
     public int calculateATSScore(String resumeText) {
 
     String[] keywords = {
-            "java",
-            "spring",
-            "spring boot",
-            "react",
-            "mysql",
-            "git",
-            "github",
-            "rest api",
-            "html",
-            "css",
-            "javascript",
-            "jwt"
-    };
 
+    // Programming
+    "java",
+    "python",
+    "c++",
+    "javascript",
+
+    // Frontend
+    "html",
+    "css",
+    "react",
+    "angular",
+
+    // Backend
+    "spring",
+    "spring boot",
+    "node.js",
+    "rest api",
+
+    // Database
+    "mysql",
+    "mongodb",
+    "sql",
+
+    // DevOps
+    "docker",
+    "kubernetes",
+    "aws",
+    "git",
+    "github",
+
+    // Data Science / AI
+    "machine learning",
+    "deep learning",
+    "tensorflow",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "data analysis",
+
+    // Soft Skills
+    "communication",
+    "leadership",
+    "teamwork",
+    "problem solving"
+};
     int matches = 0;
 
     String lowerText = resumeText.toLowerCase();
@@ -52,27 +84,60 @@ public class ResumeService {
         }
     }
 
-    return (matches * 100) / keywords.length;
+int score = 40 + ((matches * 60) / keywords.length);
+
+return Math.min(score, 100);
 }
 
     public String generateATSReport(String resumeText) {
 
     String[] keywords = {
-            "java",
-            "spring boot",
-            "react",
-            "mysql",
-            "git",
-            "github",
-            "rest api",
-            "html",
-            "css",
-            "javascript",
-            "jwt",
-            "docker",
-            "aws",
-            "kubernetes"
-    };
+
+    // Programming
+    "java",
+    "python",
+    "c++",
+    "javascript",
+
+    // Frontend
+    "html",
+    "css",
+    "react",
+    "angular",
+
+    // Backend
+    "spring",
+    "spring boot",
+    "node.js",
+    "rest api",
+
+    // Database
+    "mysql",
+    "mongodb",
+    "sql",
+
+    // DevOps
+    "docker",
+    "kubernetes",
+    "aws",
+    "git",
+    "github",
+
+    // Data Science / AI
+    "machine learning",
+    "deep learning",
+    "tensorflow",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "data analysis",
+
+    // Soft Skills
+    "communication",
+    "leadership",
+    "teamwork",
+    "problem solving"
+};
 
     StringBuilder foundSkills = new StringBuilder();
     StringBuilder missingSkills = new StringBuilder();
@@ -94,7 +159,9 @@ public class ResumeService {
         }
     }
 
-    int score = (matches * 100) / keywords.length;
+   int score = 40 + ((matches * 60) / keywords.length);
+
+score = Math.min(score, 100);
 
     return "ATS Score: " + score + "/100\n\n"
             + "Found Skills:\n"

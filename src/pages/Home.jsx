@@ -5,7 +5,6 @@ import ATSDemo from "../components/ATSDemo";
 import InterviewDemo from "../components/InterviewDemo";
 import DashboardPreview from "../components/DashboardPreview";
 import TrustedCompanies from "../components/TrustedCompanies";
-import ResumeAnalyzer from "../components/ResumeAnalyzer";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 
@@ -60,7 +59,6 @@ const Home = () => {
       <InterviewDemo />
       <DashboardPreview />
       <TrustedCompanies />
-      <ResumeAnalyzer />
       <Testimonials />
       <Footer />
 
