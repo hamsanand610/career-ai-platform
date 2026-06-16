@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/JobRecommendations.css";
 import Sidebar from "../components/Sidebar";
 import "../styles/Dashboard.css";
+import { API_BASE_URL } from "../config";
 
 function JobRecommendations() {
 
@@ -11,7 +12,7 @@ function JobRecommendations() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:8080/api/jobs/recommend")
+      .get(`${API_BASE_URL}/api/jobs/recommend`)
       .then((response) => {
 
         setJobs(response.data);

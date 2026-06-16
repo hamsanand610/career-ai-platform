@@ -3,6 +3,7 @@ import "../styles/Dashboard.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { API_BASE_URL } from "../config";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const [stats, setStats] = useState({
   useEffect(() => {
 
     axios
-      .get("http://localhost:8080/api/dashboard/stats")
+      .get(`${API_BASE_URL}/api/dashboard/stats`)
       .then((response) => {
 
         console.log(response.data);

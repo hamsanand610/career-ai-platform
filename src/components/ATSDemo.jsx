@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 function ATSDemo() {
 
@@ -25,7 +26,7 @@ const handleDemo = async () => {
   try {
 
     const response = await axios.post(
-      "http://localhost:8080/api/resume/upload",
+      `${API_BASE_URL}/api/resume/upload`,
       formData
     );
 

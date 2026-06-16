@@ -3,6 +3,7 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import "../styles/Dashboard.css";
 import "../styles/JobMatch.css";
+import { API_BASE_URL } from "../config";
 
 function JobMatch() {
 
@@ -39,7 +40,7 @@ const analyzeMatch = async () => {
 
     const resumeResponse =
       await axios.post(
-        "http://localhost:8080/api/resume/extract",
+        `${API_BASE_URL}/api/resume/extract`,
         formData,
         {
           headers: {
@@ -51,7 +52,7 @@ const analyzeMatch = async () => {
 
     const response =
       await axios.post(
-        "http://localhost:8080/api/job-match",
+        `${API_BASE_URL}/api/job-match`,
         {
           resumeText:
             resumeResponse.data,

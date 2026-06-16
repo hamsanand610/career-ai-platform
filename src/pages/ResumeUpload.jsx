@@ -3,6 +3,7 @@ import axios from "axios";
 import "./../styles/ResumeUpload.css";
 import "../styles/Dashboard.css";
 import Sidebar from "../components/Sidebar";
+import { API_BASE_URL } from "../config";
 
 function ResumeUpload() {
 
@@ -31,7 +32,7 @@ function ResumeUpload() {
     try {
 
       const response = await axios.post(
-        "http://localhost:8080/api/resume/upload",
+        `${API_BASE_URL}/api/resume/upload`,
         formData
       );
 
@@ -111,7 +112,7 @@ const downloadPdf = async () => {
   try {
 
     const response = await axios.post(
-      "http://localhost:8080/api/report/download",
+      `${API_BASE_URL}/api/report/download`,
       reportContent,
       {
         responseType: "blob",

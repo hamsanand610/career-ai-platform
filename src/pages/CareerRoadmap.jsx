@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/CareerRoadmap.css";
 import Sidebar from "../components/Sidebar";
 import "../styles/Dashboard.css";
+import { API_BASE_URL } from "../config";
 
 function CareerRoadmap() {
 
@@ -11,7 +12,7 @@ function CareerRoadmap() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:8080/api/roadmap")
+      .get(`${API_BASE_URL}/api/roadmap`)
       .then((response) => {
 
         setRoadmap(response.data);

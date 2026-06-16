@@ -9,6 +9,7 @@ import CareerRoadmap from "./pages/CareerRoadmap";
 import JobRecommendations from "./pages/JobRecommendations";
 import Home from "./pages/Home";
 import JobMatch from "./pages/JobMatch";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         path="/login"
         element={<Login />}
       />
+      <Route path="/register" element={<Register />} />
 
         <Route
           path="/dashboard"

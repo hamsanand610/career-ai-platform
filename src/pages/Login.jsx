@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import { API_BASE_URL } from "../config";
 
 function Login() {
 
@@ -16,20 +17,25 @@ function Login() {
 
     try {
 
-      const response = await axios.post(
-        "http://localhost:8080/api/users/login",
-        {
-          email,
-          password,
-        }
-      );
+const response = await axios.post(
+  `${API_BASE_URL}/api/users/login`,
+  {
+    email,
+    password,
+  }
+);
 
-      localStorage.setItem(
-        "token",
-        response.data
-      );
+if (
+  response.data === "User not found" ||
+  response.data === "Invalid password"
+) {
+  alert(response.data);
+  return;
+}
 
-      navigate("/dashboard");
+localStorage.setItem("token", response.data);
+
+navigate("/dashboard");
 
     } catch (error) {
 
@@ -105,6 +111,26 @@ function Login() {
             >
               Login
             </button>
+            <p
+  style={{
+    textAlign: "center",
+    marginTop: "16px",
+    color: "#94a3b8",
+    fontSize: "14px"
+  }}
+>
+  Don't have an account?{" "}
+  <span
+    onClick={() => navigate("/register")}
+    style={{
+      color: "#6366f1",
+      cursor: "pointer",
+      fontWeight: "600"
+    }}
+  >
+    Sign Up
+  </span>
+</p>
           <p
   onClick={() => navigate("/")}
   style={{

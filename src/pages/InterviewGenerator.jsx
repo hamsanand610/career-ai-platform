@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/InterviewGenerator.css";
 import Sidebar from "../components/Sidebar";
 import "../styles/Dashboard.css";
+import { API_BASE_URL } from "../config";
 
 function InterviewGenerator() {
 
@@ -31,7 +32,7 @@ function InterviewGenerator() {
     try {
 
       const response = await axios.get(
-        `http://localhost:8080/api/interview/generate?role=${role}&difficulty=${difficulty}`
+        `${API_BASE_URL}/api/interview/generate?role=${role}&difficulty=${difficulty}`
       );
 
       setQuestions(response.data);
@@ -72,7 +73,7 @@ function InterviewGenerator() {
     try {
 
       const response = await axios.post(
-        "http://localhost:8080/api/interview/evaluate",
+        `${API_BASE_URL}/api/interview/evaluate`,
         {
           question: selectedQuestion,
           answer: answer

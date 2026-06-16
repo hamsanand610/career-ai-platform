@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/ResumeHistory.css";
 import Sidebar from "../components/Sidebar";
 import "../styles/Dashboard.css";
+import { API_BASE_URL } from "../config";
 
 function ResumeHistory() {
 
@@ -11,7 +12,7 @@ function ResumeHistory() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:8080/api/resume/history")
+      .get(`${API_BASE_URL}/api/resume/history`)
       .then((response) => {
 
         setHistory(response.data);
