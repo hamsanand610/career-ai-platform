@@ -74,10 +74,10 @@ function Login() {
 
           <h2>Welcome Back 👋</h2>
 
-<p className="login-subtitle">
-  Login to continue your AI career journey.
-</p>
-          <form onSubmit={handleLogin}>
+<p style={{ color: '#94a3b8', margin: '0 0 24px 0', fontSize: '14px', lineHeight: '1.5' }}>
+    Login to continue your AI career journey
+  </p>
+            <form onSubmit={handleLogin}>
 
             <input
               type="email"
@@ -105,12 +105,22 @@ function Login() {
             >
               Login
             </button>
-              <p
-  className="back-home"
+          <p
   onClick={() => navigate("/")}
+  style={{
+    textAlign: 'center',
+    marginTop: '24px',
+    marginBottom: '0',
+    color: '#94a3b8',        /* Sleek muted slate color */
+    fontSize: '14px',
+    cursor: 'pointer',
+    transition: 'color 0.3s ease'
+  }}
+  onMouseEnter={(e) => e.target.style.color = '#ffffff'} /* Hover effect: turns crisp white */
+  onMouseLeave={(e) => e.target.style.color = '#94a3b8'} /* Reverts when mouse leaves */
 >
   ← Back to Home
-</p>
+</p>   
           </form>
 
         </div>
