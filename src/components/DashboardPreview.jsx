@@ -8,10 +8,9 @@ import {
 const DashboardPreview = () => {
   return (
     <section
-  id="dashboard"
-  className="py-32 px-6 bg-black text-white relative overflow-hidden"
->
-
+      id="dashboard"
+      className="py-32 px-6 bg-black text-white relative overflow-hidden"
+    >
       {/* Glow Effects */}
 
       <div className="absolute top-20 left-0 w-[350px] h-[350px] bg-purple-600 blur-[180px] opacity-20 rounded-full"></div>
@@ -25,18 +24,18 @@ const DashboardPreview = () => {
         <div className="text-center mb-24">
 
           <p className="text-purple-400 uppercase tracking-[0.4em] text-sm mb-6">
-            AI ANALYTICS DASHBOARD
+            CAREERAI ANALYTICS
           </p>
 
           <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-8">
-            Smart Insights For <br />
-            Career Growth
+            Track Your Career <br />
+            Progress With AI
           </h2>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Monitor interview performance, analyze resume strength,
-            track preparation progress, and improve placement success
-            using powerful AI-driven analytics.
+            Analyze resumes, evaluate interview performance,
+            compare job descriptions and monitor your
+            career growth through intelligent AI analytics.
           </p>
 
         </div>
@@ -59,18 +58,18 @@ const DashboardPreview = () => {
                   <FiTarget />
                 </div>
 
-                <span className="text-green-400 text-sm">
-                  +12%
+                <span className="text-purple-400 text-sm">
+                  Latest
                 </span>
 
               </div>
 
               <p className="text-gray-400 mb-3">
-                Interview Score
+                Latest ATS Score
               </p>
 
               <h3 className="text-5xl font-bold">
-                92%
+                57
               </h3>
 
             </div>
@@ -86,17 +85,17 @@ const DashboardPreview = () => {
                 </div>
 
                 <span className="text-green-400 text-sm">
-                  +8
+                  Growing
                 </span>
 
               </div>
 
               <p className="text-gray-400 mb-3">
-                Completed Sessions
+                Resumes Analyzed
               </p>
 
               <h3 className="text-5xl font-bold">
-                48
+                31
               </h3>
 
             </div>
@@ -112,17 +111,17 @@ const DashboardPreview = () => {
                 </div>
 
                 <span className="text-green-400 text-sm">
-                  ATS Ready
+                  Top Score
                 </span>
 
               </div>
 
               <p className="text-gray-400 mb-3">
-                Resume Score
+                Best ATS Score
               </p>
 
               <h3 className="text-5xl font-bold">
-                87
+                59
               </h3>
 
             </div>
@@ -138,94 +137,99 @@ const DashboardPreview = () => {
                 </div>
 
                 <span className="text-green-400 text-sm">
-                  Live
+                  Active
                 </span>
 
               </div>
 
               <p className="text-gray-400 mb-3">
-                AI Performance
+                AI Reviews
               </p>
 
               <h3 className="text-5xl font-bold">
-                95%
+                31
               </h3>
 
             </div>
 
           </div>
 
-          {/* Analytics Chart */}
+          {/* Analytics Section */}
 
           <div className="mt-10 bg-black/40 border border-white/10 rounded-3xl p-10">
 
             <div className="flex justify-between items-center mb-10">
 
               <div>
+
                 <h3 className="text-2xl font-bold mb-2">
-                  Weekly Performance
+                  CareerAI Analytics
                 </h3>
 
                 <p className="text-gray-400">
-                  AI-generated preparation analytics
+                  Real-time insights from resume analysis and interview preparation
                 </p>
+
               </div>
 
               <button className="bg-white/10 border border-white/10 px-5 py-2 rounded-full text-sm hover:border-purple-500/40 transition">
-                View Report
+
+                Explore Dashboard
+
               </button>
 
             </div>
 
-            {/* Bars */}
+            {/* Analytics Bars */}
 
             <div className="flex items-end gap-6 h-[300px] mt-10">
+
               <div className="w-full">
 
-                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[180px] w-full"></div>
+                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[220px] w-full"></div>
 
                 <p className="text-center mt-4 text-gray-400">
-                  Mon
+                  ATS
                 </p>
 
               </div>
 
               <div className="w-full">
 
-                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[180px] w-full"></div>
+                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[170px] w-full"></div>
 
                 <p className="text-center mt-4 text-gray-400">
-                  Tue
+                  AI
                 </p>
 
               </div>
 
               <div className="w-full">
 
-                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[180px] w-full"></div>
+                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[250px] w-full"></div>
 
                 <p className="text-center mt-4 text-gray-400">
-                  Wed
+                  Jobs
                 </p>
 
               </div>
 
               <div className="w-full">
 
-                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[180px] w-full"></div>
+                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[190px] w-full"></div>
 
                 <p className="text-center mt-4 text-gray-400">
-                  Thu
+                  Roadmap
                 </p>
 
               </div>
 
               <div className="w-full">
 
-                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[180px] w-full"></div>
+                <div className="bg-gradient-to-t from-purple-500 to-blue-500 rounded-t-3xl h-[280px] w-full"></div>
 
                 <p className="text-center mt-4 text-gray-400">
-                  Fri
+                  Growth
                 </p>
 
               </div>

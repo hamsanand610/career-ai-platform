@@ -1,0 +1,129 @@
+.roadmap-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  background: #050816;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.roadmap-container::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(139,92,246,0.15);
+  filter: blur(180px);
+  top: -150px;
+  left: -150px;
+}
+
+.roadmap-container::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(37,99,235,0.15);
+  filter: blur(180px);
+  bottom: -150px;
+  right: -150px;
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.roadmap-header h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: white;
+}
+
+.roadmap-header p {
+  color: #94a3b8;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.roadmap-card {
+  max-width: 1100px;
+  margin: auto;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 40px rgba(139,92,246,.12);
+}
+
+.roadmap-title {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roadmap-steps {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+
+.step-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 24px;
+  transition: .3s;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139,92,246,.4);
+}
+
+.step-icon {
+  font-size: 32px;
+}
+
+.step-card h3 {
+  margin: 0;
+  color: white;
+}
+
+.step-card p {
+  margin-top: 6px;
+  color: #94a3b8;
+}
+
+.completed {
+  border-color: rgba(34,197,94,.4);
+}
+
+@media (max-width: 768px) {
+
+  .roadmap-container {
+    padding: 20px;
+  }
+
+  .roadmap-header h1 {
+    font-size: 38px;
+  }
+
+  .roadmap-card {
+    padding: 25px;
+  }
+
+  .roadmap-steps {
+    grid-template-columns: 1fr;
+  }
+
+}

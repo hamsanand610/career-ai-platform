@@ -1,0 +1,21 @@
+[33mcommit 4c94f4ee640eddadb6e2bd3244da209532264aa8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mappmod/java-upgrade-20260606180715[m[33m, [m[1;31morigin/appmod/java-upgrade-20260606180715[m[33m)[m
+Author: Hamsanand <hamsanand610@gmail.com>
+Date:   Tue Jun 16 21:58:26 2026 +0530
+
+    fix login authentication validation
+
+ .../java/careerai_backend/service/UserService.java |   4 [32m+[m
+ src/App.jsx                                        |   2 [32m+[m
+ src/components/ATSDemo.jsx                         |   3 [32m+[m[31m-[m
+ src/components/InterviewDemo.jsx                   |   3 [32m+[m[31m-[m
+ src/config.js                                      |   2 [32m+[m
+ src/pages/CareerRoadmap.jsx                        |   3 [32m+[m[31m-[m
+ src/pages/Dashboard.jsx                            |   3 [32m+[m[31m-[m
+ src/pages/InterviewGenerator.jsx                   |   5 [32m+[m[31m-[m
+ src/pages/JobMatch.jsx                             |   5 [32m+[m[31m-[m
+ src/pages/JobRecommendations.jsx                   |   3 [32m+[m[31m-[m
+ src/pages/Login.jsx                                |  50 [32m++++++[m[31m---[m
+ src/pages/Register.jsx                             | 117 [32m+++++++++++++++++++++[m
+ src/pages/ResumeHistory.jsx                        |   3 [32m+[m[31m-[m
+ src/pages/ResumeUpload.jsx                         |   5 [32m+[m[31m-[m
+ 14 files changed, 184 insertions(+), 24 deletions(-)

@@ -1,14 +1,28 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ResumeUpload from "./pages/ResumeUpload";
+import InterviewGenerator from "./pages/InterviewGenerator";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import ResumeHistory from "./pages/ResumeHistory";
+import CareerRoadmap from "./pages/CareerRoadmap";
+import JobRecommendations from "./pages/JobRecommendations";
+import Home from "./pages/Home";
+import JobMatch from "./pages/JobMatch";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Login />} />
+      <Route path="/" element={<Home />} />
+
+      <Route
+        path="/login"
+        element={<Login />}
+      />
+      <Route path="/register" element={<Register />} />
 
         <Route
           path="/dashboard"
@@ -19,6 +33,50 @@ function App() {
           }
         />
 
+        <Route
+          path="/resume-upload"
+          element={
+            <ProtectedRoute>
+              <ResumeUpload />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+        path="/interview-generator"
+        element={
+        <ProtectedRoute>
+      <InterviewGenerator />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/resume-history"
+  element={
+    <ProtectedRoute>
+      <ResumeHistory />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/career-roadmap"
+  element={
+    <ProtectedRoute>
+      <CareerRoadmap />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/job-recommendations"
+  element={
+    <ProtectedRoute>
+      <JobRecommendations />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/job-match"
+  element={<JobMatch />}
+/>
       </Routes>
     </BrowserRouter>
   );
