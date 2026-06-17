@@ -1,2 +1,1 @@
-export const API_BASE_URL =
-  "https://careerai-backend-cv6c.onrender.com";
+export const API_BASE_URL ="https://careerai-backend-cv6c.onrender.com/"

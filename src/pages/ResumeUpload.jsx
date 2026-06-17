@@ -31,10 +31,17 @@ function ResumeUpload() {
 
     try {
 
-      const response = await axios.post(
-        `${API_BASE_URL}/api/resume/upload`,
-        formData
-      );
+const token = localStorage.getItem("token");
+
+const response = await axios.post(
+  `${API_BASE_URL}/api/resume/upload`,
+  formData,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);
 
       setResult(response.data);
       setReportContent(response.data);

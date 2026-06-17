@@ -31,9 +31,16 @@ function InterviewGenerator() {
 
     try {
 
-      const response = await axios.get(
-        `${API_BASE_URL}/api/interview/generate?role=${role}&difficulty=${difficulty}`
-      );
+const token = localStorage.getItem("token");
+
+const response = await axios.get(
+  `${API_BASE_URL}/api/interview/generate?role=${role}&difficulty=${difficulty}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);
 
       setQuestions(response.data);
 
@@ -84,7 +91,10 @@ function InterviewGenerator() {
 
     } catch (error) {
 
-      console.error(error);
+      console.error(
+  "Interview Evaluation Error:",
+  error.response?.data || error.message
+);
 
       alert("Evaluation failed");
     } finally {

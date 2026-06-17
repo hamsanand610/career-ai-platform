@@ -16,24 +16,36 @@ const [stats, setStats] = useState({
   averageScore: 0
 });
 
-  useEffect(() => {
+useEffect(() => {
 
-    axios
-      .get(`${API_BASE_URL}/api/dashboard/stats`)
-      .then((response) => {
+  const token = localStorage.getItem("token");
 
-        console.log(response.data);
+  axios
+    .get(
+      `${API_BASE_URL}/api/dashboard/stats`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    .then((response) => {
 
-        setStats(response.data);
+      console.log(response.data);
 
-      })
-      .catch((error) => {
+      setStats(response.data);
 
-        console.error(error);
+    })
+    .catch((error) => {
 
-      });
+      console.error(
+        "Dashboard Error:",
+        error
+      );
 
-  }, []);
+    });
+
+}, []);
 
   return (
 

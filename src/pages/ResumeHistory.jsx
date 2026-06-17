@@ -9,22 +9,34 @@ function ResumeHistory() {
 
   const [history, setHistory] = useState([]);
 
-  useEffect(() => {
+useEffect(() => {
 
-    axios
-      .get(`${API_BASE_URL}/api/resume/history`)
-      .then((response) => {
+  const token = localStorage.getItem("token");
 
-        setHistory(response.data);
+  axios
+    .get(
+      `${API_BASE_URL}/api/resume/history`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    .then((response) => {
 
-      })
-      .catch((error) => {
+      setHistory(response.data);
 
-        console.error(error);
+    })
+    .catch((error) => {
 
-      });
+      console.error(
+        "Resume History Error:",
+        error
+      );
 
-  }, []);
+    });
+
+}, []);
 
 return (
 
@@ -52,7 +64,7 @@ return (
 
   <h3>Latest ATS Score</h3>
 
-  <p>{history[0]?.atsScore}</p>
+<p>{history[0]?.atsScore || 0}</p>
 
   <span>
     {history[0]?.atsScore >= 80

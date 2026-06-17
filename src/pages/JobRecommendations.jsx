@@ -7,12 +7,21 @@ import { API_BASE_URL } from "../config";
 
 function JobRecommendations() {
 
-  const [, setJobs] = useState("");
+  const [jobs, setJobs] = useState("");
 
   useEffect(() => {
 
+    const token = localStorage.getItem("token");
+
     axios
-      .get(`${API_BASE_URL}/api/jobs/recommend`)
+      .get(
+        `${API_BASE_URL}/api/jobs/recommend`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
       .then((response) => {
 
         setJobs(response.data);
@@ -28,110 +37,57 @@ function JobRecommendations() {
 
   return (
 
-  <div className="dashboard-layout">
+    <div className="dashboard-layout">
 
-    <Sidebar />
+      <Sidebar />
 
-    <div className="main-content">
+      <div className="main-content">
 
-      <div className="jobs-container">
+        <div className="jobs-container">
 
-        <div className="jobs-header">
+          <div className="jobs-header">
 
-          <h1>💼 Job Recommendations</h1>
+            <h1>💼 Job Recommendations</h1>
 
-          <p>
-            Personalized opportunities based on your resume skills.
+            <p>
+              Personalized opportunities based on your resume skills.
+            </p>
+
+          </div>
+
+          <p className="jobs-subtitle">
+            Based on your resume skills and ATS analysis,
+            these roles match your profile best.
           </p>
 
+          <div className="jobs-card">
+
+            <h2 className="jobs-title">
+              Recommended Roles
+            </h2>
+
+            <div
+              style={{
+                whiteSpace: "pre-wrap",
+                color: "white",
+                lineHeight: "1.8",
+                fontSize: "16px",
+                textAlign: "left",
+                padding: "20px"
+              }}
+            >
+              {jobs?.replace(/\\n/g, "\n")}
+            </div>
+
+          </div>
+
         </div>
-<p className="jobs-subtitle">
-  Based on your resume skills and ATS analysis,
-  these roles match your profile best.
-</p>
-<div className="jobs-card">
-
-  <h2 className="jobs-title">
-    Recommended Roles
-  </h2>
-
-  <div className="jobs-grid">
-
-    <div className="job-item">
-
-      <div className="job-icon">💻</div>
-
-      <div>
-
-        <h3>Java Developer</h3>
-
-        <p>92% Match</p>
-
-        <span>📍 Bangalore • ₹6-10 LPA</span>
 
       </div>
 
     </div>
 
-    <div className="job-item">
-
-      <div className="job-icon">⚛️</div>
-
-      <div>
-
-        <h3>Frontend Developer</h3>
-
-        <p>88% Match</p>
-
-        <span>📍 Chennai • ₹5-8 LPA</span>
-
-      </div>
-
-    </div>
-
-    <div className="job-item">
-
-      <div className="job-icon">🗄️</div>
-
-      <div>
-
-        <h3>Backend Developer</h3>
-
-        <p>90% Match</p>
-
-        <span>📍 Hyderabad • ₹6-9 LPA</span>
-
-      </div>
-
-    </div>
-
-    <div className="job-item">
-
-      <div className="job-icon">🚀</div>
-
-      <div>
-
-        <h3>Full Stack Developer</h3>
-
-        <p>95% Match</p>
-
-        <span>📍 Bengaluru • ₹8-12 LPA</span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-);
+  );
 }
 
 export default JobRecommendations;

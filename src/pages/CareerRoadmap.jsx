@@ -7,12 +7,21 @@ import { API_BASE_URL } from "../config";
 
 function CareerRoadmap() {
 
-  const [, setRoadmap] = useState("");
+  const [roadmap, setRoadmap] = useState("");
 
-  useEffect(() => {
+useEffect(() => {
 
-    axios
-      .get(`${API_BASE_URL}/api/roadmap`)
+  const token = localStorage.getItem("token");
+
+  axios
+    .get(
+      `${API_BASE_URL}/api/roadmap`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
       .then((response) => {
 
         setRoadmap(response.data);
@@ -47,70 +56,22 @@ function CareerRoadmap() {
         </div>
 
 <div className="roadmap-card">
-
   <h2 className="roadmap-title">
     Your Learning Path
   </h2>
 
-<div className="roadmap-steps">
-
-  <div className="step-card completed">
-    <div className="step-icon">✅</div>
-    <div>
-      <h3>Spring Boot</h3>
-      <p>Backend Development</p>
-    </div>
+  <div className="roadmap-content">
+    {roadmap?.replace(/\\n/g, "\n")}
   </div>
-
-  <div className="step-card completed">
-    <div className="step-icon">✅</div>
-    <div>
-      <h3>REST APIs</h3>
-      <p>API Design & Integration</p>
-    </div>
-  </div>
-
-  <div className="step-card completed">
-    <div className="step-icon">✅</div>
-    <div>
-      <h3>JWT Authentication</h3>
-      <p>Security & Authorization</p>
-    </div>
-  </div>
-
-  <div className="step-card">
-    <div className="step-icon">🐳</div>
-    <div>
-      <h3>Docker</h3>
-      <p>Containerization</p>
-    </div>
-  </div>
-
-  <div className="step-card">
-    <div className="step-icon">☁️</div>
-    <div>
-      <h3>AWS Cloud</h3>
-      <p>Deployment & Hosting</p>
-    </div>
-  </div>
-
-  <div className="step-card">
-    <div className="step-icon">⚙️</div>
-    <div>
-      <h3>Kubernetes</h3>
-      <p>Scalable Infrastructure</p>
-    </div>
-  </div>
-
 </div>
-</div>
+
       </div>
 
     </div>
 
   </div>
 
-);
+  );
 }
 
 export default CareerRoadmap;
