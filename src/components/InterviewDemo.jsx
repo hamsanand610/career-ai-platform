@@ -10,6 +10,7 @@ function InterviewDemo() {
   const [role, setRole] = useState("");
 
   const [questions, setQuestions] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const generateQuestions = async () => {
 
@@ -19,6 +20,7 @@ function InterviewDemo() {
 
       return;
     }
+    setLoading(true);
 
     try {
 
@@ -33,8 +35,10 @@ const response = await axios.get(
           .join("\n");
 
       setQuestions(preview);
+      setLoading(false);
 
     } catch (error) {
+      setLoading(false);
 
       console.error(error);
 
@@ -95,12 +99,13 @@ const response = await axios.get(
 
           </select>
 
-          <button
-            onClick={generateQuestions}
-            className="mt-6 bg-gradient-to-r from-purple-500 to-blue-500 px-8 py-4 rounded-full text-white font-semibold hover:scale-105 transition"
-          >
-            Generate Questions
-          </button>
+<button
+  onClick={generateQuestions}
+  disabled={loading}
+  className="mt-6 bg-gradient-to-r from-purple-500 to-blue-500 px-8 py-4 rounded-full text-white font-semibold hover:scale-105 transition"
+>
+  {loading ? "Generating Questions..." : "Generate Questions"}
+</button>
 
           {questions && (
 

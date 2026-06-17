@@ -9,6 +9,7 @@ function ATSDemo() {
 
   const [score, setScore] = useState(null);
 const [file, setFile] = useState(null);
+const [loading, setLoading] = useState(false);
 
 const handleDemo = async () => {
 
@@ -23,12 +24,15 @@ const handleDemo = async () => {
 
   formData.append("file", file);
 
+  setLoading(true);
+  
   try {
 
 const response = await axios.post(
   `${API_BASE_URL}/api/resume/demo-upload`,
   formData
 );
+
 
     const match =
       response.data.match(
@@ -40,8 +44,10 @@ const response = await axios.post(
       setScore(match[1]);
 
     }
+    setLoading(false);
 
   } catch (error) {
+    setLoading(false);
 
     console.error(error);
 
@@ -109,12 +115,13 @@ const response = await axios.post(
                 className="mt-8 w-full text-white"
                 />
 
-              <button
-                onClick={handleDemo}
-                className="mt-8 bg-gradient-to-r from-purple-500 to-blue-500 px-8 py-4 rounded-full text-white font-semibold hover:scale-105 transition"
-              >
-                Analyze Resume
-              </button>
+<button
+  onClick={handleDemo}
+  disabled={loading}
+  className="mt-8 bg-gradient-to-r from-purple-500 to-blue-500 px-8 py-4 rounded-full text-white font-semibold hover:scale-105 transition"
+>
+  {loading ? "Analyzing Resume..." : "Analyze Resume"}
+</button>
 
             </div>
 
