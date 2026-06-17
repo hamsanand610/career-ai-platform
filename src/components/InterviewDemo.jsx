@@ -22,9 +22,9 @@ function InterviewDemo() {
 
     try {
 
-      const response = await axios.get(
-        `${API_BASE_URL}/api/interview/generate?role=${role}`
-      );
+const response = await axios.get(
+  `${API_BASE_URL}/api/interview/demo?role=${role}`
+);
 
       const preview =
         response.data

@@ -25,10 +25,10 @@ const handleDemo = async () => {
 
   try {
 
-    const response = await axios.post(
-      `${API_BASE_URL}/api/resume/upload`,
-      formData
-    );
+const response = await axios.post(
+  `${API_BASE_URL}/api/resume/demo-upload`,
+  formData
+);
 
     const match =
       response.data.match(
