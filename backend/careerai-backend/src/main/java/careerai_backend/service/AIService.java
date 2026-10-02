@@ -14,6 +14,9 @@ public class AIService {
     @Value("${groq.api.key}")
     private String apiKey;
 
+    @Value("${groq.model:llama-3.3-70b-versatile}")
+    private String modelName;
+
     private final WebClient webClient = WebClient.builder().build();
 
     public String askAI(String prompt) {
@@ -26,7 +29,7 @@ public class AIService {
 
         String requestBody = String.format("""
         {
-          "model": "llama-3.1-8b-instant",
+          "model": "%s",
           "messages": [
             {
               "role": "user",
@@ -35,7 +38,7 @@ public class AIService {
           ],
           "temperature": 0.7
         }
-        """, safePrompt);
+        """, modelName, safePrompt);
 
         try {
 
