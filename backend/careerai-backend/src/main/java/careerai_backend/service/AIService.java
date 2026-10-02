@@ -14,7 +14,7 @@ public class AIService {
     @Value("${groq.api.key}")
     private String apiKey;
 
-    @Value("${groq.model:llama-3.3-70b-versatile}")
+    @Value("${groq.model:qwen/qwen3.8-27b}")
     private String modelName;
 
     private final WebClient webClient = WebClient.builder().build();
